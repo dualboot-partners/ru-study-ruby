@@ -1,0 +1,17 @@
+ruby:
+  build: .
+  volumes:
+    - .:/apps/study
+  command: sh -c 'bundle check || bundle install'
+  dns:
+    - 192.168.30.1
+    - 8.8.8.8
+  environment:
+    - BUNDLE_PATH=/bundle_cache
+  volumes_from:
+    - bundle_cache
+
+bundle_cache:
+  image: busybox
+  volumes:
+    - /bundle_cache

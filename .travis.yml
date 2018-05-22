@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.3.0
+before_install: gem install bundler -v 1.10.5
+env:
+  - TESTFOLDER=./
+script:
+  - bundle exec rake -t
+  - bundle exec rubocop test
+notifications:
+  slack: restream-study:vR2H907pZnF4GOMkOsPM1V58
