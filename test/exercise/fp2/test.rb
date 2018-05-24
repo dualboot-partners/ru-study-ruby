@@ -3,10 +3,10 @@ require './test/test_helper.rb'
 require_relative './solution.rb'
 
 # Нужно реализовать примитивы функционального программирования
-class Template::Fp2Test < Minitest::Test
+class Exercise::Fp2Test < Minitest::Test
   def setup
     @array = generate :array
-    @my_array = Template::Fp2::MyArray.new(@array)
+    @my_array = Exercise::Fp2::MyArray.new(@array)
     @int = generate :int
   end
 

@@ -1,4 +1,4 @@
-module Template
+module Exercise
   module Fp
     class << self
       # Обратиться к параметрам фильма можно так:

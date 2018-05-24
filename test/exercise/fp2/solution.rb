@@ -1,4 +1,4 @@
-module Template
+module Exercise
   module Fp2
     class MyArray < Array
       # Использовать стандартные функции массива для решения задач нельзя.

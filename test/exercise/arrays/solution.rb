@@ -1,4 +1,4 @@
-module Template
+module Exercise
   module Arrays
     class << self
       def replace(array)
