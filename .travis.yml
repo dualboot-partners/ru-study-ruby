@@ -7,5 +7,3 @@ env:
 script:
   - bundle exec rake -t
   - bundle exec rubocop test
-notifications:
-  slack: restream-study:vR2H907pZnF4GOMkOsPM1V58
