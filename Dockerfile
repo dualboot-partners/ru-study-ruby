@@ -1,7 +1,7 @@
-FROM ruby:2.3.0
+FROM ruby:2.3.7-stretch
 
 RUN apt-get update -qq
-RUN apt-get install locales
+RUN apt-get install locales -y
 RUN echo 'ru_RU.UTF-8 UTF-8' >> /etc/locale.gen
 RUN locale-gen ru_RU.UTF-8
 RUN dpkg-reconfigure -fnoninteractive locales
