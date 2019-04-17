@@ -65,5 +65,8 @@ DEPENDENCIES
   rubocop
   test-unit
 
+RUBY VERSION
+   ruby 2.3.7p456
+
 BUNDLED WITH
-   1.11.2
+   1.16.6
