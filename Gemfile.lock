@@ -24,7 +24,7 @@ GEM
       ast (~> 2.2)
     power_assert (0.2.6)
     powerpack (0.1.1)
-    rack (1.6.4)
+    rack (1.6.11)
     rack-test (0.6.3)
       rack (>= 1.0)
     rainbow (2.1.0)
