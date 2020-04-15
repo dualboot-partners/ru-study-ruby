@@ -1,17 +1,25 @@
-ruby:
-  build: .
-  volumes:
-    - .:/apps/study
-  command: sh -c 'bundle check || bundle install'
-  dns:
-    - 192.168.30.1
-    - 8.8.8.8
-  environment:
-    - BUNDLE_PATH=/bundle_cache
-  volumes_from:
-    - bundle_cache
+version: "3.7"
+services:
+  ruby:
+    build: .
+    volumes:
+      - .:/apps/study
+      - ~/.bash_history:/root/.bash_history
+      - bundle_cache:/bundle_cache
+    command: sh -c 'bundle check || bundle install'
+    dns:
+      - 192.168.30.1
+      - 8.8.8.8
+    environment:
+      BUNDLE_PATH: /bundle_cache
+      GEM_HOME: /bundle_cache
+      GEM_PATH: /bundle_cache
 
-bundle_cache:
-  image: busybox
-  volumes:
-    - /bundle_cache
+  bundle_cache:
+    image: busybox
+    volumes:
+      - /bundle_cache
+
+volumes:
+  bundle_cache:
+  public:
