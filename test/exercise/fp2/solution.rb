@@ -5,20 +5,16 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each
-      end
+      def my_each; end
 
       # Написать свою функцию my_map
-      def my_map
-      end
+      def my_map; end
 
       # Написать свою функцию my_compact
-      def my_compact
-      end
+      def my_compact; end
 
       # Написать свою функцию my_reduce
-      def my_reduce
-      end
+      def my_reduce; end
     end
   end
 end

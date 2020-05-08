@@ -1,9 +1,7 @@
 module Inatra
   class << self
-    def routes
-    end
+    def routes(&block); end
 
-    def call(env)
-    end
+    def call(env); end
   end
 end

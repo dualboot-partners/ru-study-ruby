@@ -6,4 +6,4 @@ env:
   - TESTFOLDER=./
 script:
   - bundle exec rake -t
-  - bundle exec rubocop test
+  - bundle exec rubocop

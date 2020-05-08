@@ -11,15 +11,15 @@ class Exercise::ArraysTest < Minitest::Test
     assert new_array == [100, 100, -8, 100, 100, -6, 100, 100, -99]
   end
 
-  # Реализовать бинарный поиск
+  # Реализовать двоичный поиск
   # Функция должна возвращать индекс элемента
   def test_bin_search
     skip
     assert Exercise::Arrays.search([1], 900) == -1
-    assert Exercise::Arrays.search([1], 1) == 0
+    assert Exercise::Arrays.search([1], 1).zero?
     assert Exercise::Arrays.search([], 900) == -1
     assert Exercise::Arrays.search([1, 4, 5, 7, 8, 9], 9) == 5
-    assert Exercise::Arrays.search([1, 4, 5, 7, 8, 9], 1) == 0
+    assert Exercise::Arrays.search([1, 4, 5, 7, 8, 9], 1).zero?
     assert Exercise::Arrays.search([1, 4, 5, 7, 8, 9], 6) == -1
 
     array = (1..10000).to_a
