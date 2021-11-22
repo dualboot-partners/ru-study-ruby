@@ -32,7 +32,7 @@ class RackTest < Test::Unit::TestCase
     end
   end
 
-  def test_it_handles_404
+  def test_it_handles_not_found
     omit do
       browser = Rack::Test::Session.new(Rack::MockSession.new(Inatra))
       browser.get '/missing_method'

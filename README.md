@@ -2,21 +2,21 @@
 
 ## Запуск проекта
 
-```
+```sh
 docker-compose build
-docker-compose run --rm ruby bash -c 'bundle install'
+docker-compose run --rm ruby bundle
 ```
 
 ## Запуск тестов
 
-```
-docker-compose run --rm ruby bash -c 'bundle exec rake test'
+```sh
+docker-compose run --rm ruby bundle exec rake test
 ```
 
 ## Запуск линтера
 
-```
-docker-compose run --rm ruby bash -c 'bundle exec rubocop'
+```sh
+docker-compose run --rm ruby bundle exec rubocop -A
 ```
 
 ## Задача
@@ -31,6 +31,6 @@ docker-compose run --rm ruby bash -c 'bundle exec rubocop'
 
   Далее для каждой из задач реализовать недостающие методы так, чтобы все тесты проходили. Дополнительную информацию можно найти в комментарии к тесту.
 
-  Проверять можно запуская `docker-compose run --rm ruby bash -c 'bundle exec rake test'`
+  Проверять можно запуская `docker-compose run --rm ruby bundle exec rake test`
 
 3. После того как все тесты проходят, нужно создать pull request в своем репозитори в master и отправить на ревью.

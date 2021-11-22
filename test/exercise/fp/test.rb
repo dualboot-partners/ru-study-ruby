@@ -1,6 +1,6 @@
 require 'csv'
-require './test/test_helper.rb'
-require_relative './solution.rb'
+require './test/test_helper'
+require_relative './solution'
 
 # Оба задания нужно решить используя map и reduce
 class Exercise::FpTest < Minitest::Test
@@ -11,7 +11,9 @@ class Exercise::FpTest < Minitest::Test
     array = CSV.readlines('./test/fixtures/films.csv', headers: true)
 
     result = Exercise::Fp.rating(array)
+    # rubocop:disable Lint/FloatComparison
     assert result == 6.809410385259628
+    # rubocop:enable Lint/FloatComparison
   end
 
   # Посчитать количесвто букв 'и' в названиях всех фильмов с рейтингом кинопоиска больше или равным заданному значению

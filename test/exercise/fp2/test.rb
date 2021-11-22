@@ -1,6 +1,6 @@
 require 'csv'
-require './test/test_helper.rb'
-require_relative './solution.rb'
+require './test/test_helper'
+require_relative './solution'
 
 # Нужно реализовать примитивы функционального программирования
 class Exercise::Fp2Test < Minitest::Test

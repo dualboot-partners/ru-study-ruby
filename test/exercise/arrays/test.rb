@@ -1,5 +1,5 @@
-require './test/test_helper.rb'
-require_relative './solution.rb'
+require './test/test_helper'
+require_relative './solution'
 
 class Exercise::ArraysTest < Minitest::Test
   # Заменить все положительные элементы целочисленного массива на максимальное значение элементов массива.
