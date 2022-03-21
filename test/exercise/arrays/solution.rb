@@ -3,27 +3,24 @@ module Exercise
     class << self
       def replace(array)
         max = -999999999
-        array.each { |item| max = item if item > max }  
-        array.map { |item| item < 0 ? item : max }
+        array.each { |item| max = item if item > max }
+        array.map { |item| item.negative? ? item : max }
       end
 
       def search(_array, _query)
-        middle = _array.length / 2
-        min = 0
-        max = _array.length - 1
+        return -1 if _array.empty?
 
-        while min <= max
-          if _array[middle] == _query
-            return middle
-          elsif _array[middle] < _query
-            min = middle + 1
-            middle = (min + max) / 2
-          else
-            max = middle - 1
-            middle = (min + max) / 2
-          end
+        mid_index = _array.length / 2
+
+        case _query <=> _array[mid_index]
+        when -1
+          search(_array.take(mid_index), _query)
+        when 0
+          mid_index
+        when 1
+          subs = search(_array.drop(mid_index + 1), _query)
+          subs == -1 ? -1 : (mid_index + 1) + subs
         end
-        -1
       end
     end
   end
