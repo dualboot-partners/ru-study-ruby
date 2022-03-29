@@ -4,7 +4,6 @@ require_relative './solution'
 class Exercise::ArraysTest < Minitest::Test
   # Заменить все положительные элементы целочисленного массива на максимальное значение элементов массива.
   def test_replace
-    skip
     array = [3, 2, -8, 4, 100, -6, 7, 8, -99]
     new_array = Exercise::Arrays.replace(array)
 
