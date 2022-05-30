@@ -16,7 +16,7 @@ module Exercise
 
           if array[low_index] <= query && query < array[mid]
             high_index = mid
-          elsif array[mid] < query && query <= array[high_index]
+          elsif array[mid] < query && query <= array[high_index - 1]
             low_index = mid
           else
             break

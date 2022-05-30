@@ -13,7 +13,6 @@ class Exercise::ArraysTest < Minitest::Test
   # Реализовать двоичный поиск
   # Функция должна возвращать индекс элемента
   def test_bin_search
-    skip
     assert Exercise::Arrays.search([1], 900) == -1
     assert Exercise::Arrays.search([1], 1).zero?
     assert Exercise::Arrays.search([], 900) == -1
