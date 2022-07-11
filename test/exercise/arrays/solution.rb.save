@@ -1,0 +1,21 @@
+module Exercise
+  module Arrays
+    class << self
+      def replace(array)
+	max = array.maximum
+        array
+      end
+
+      def maximum
+	i = 0
+	unless i < array.lenght
+	  array[i]
+	end
+     end
+
+      def search(_array, _query)
+        0
+      end
+    end
+  end
+end
