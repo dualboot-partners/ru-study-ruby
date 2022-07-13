@@ -6,23 +6,20 @@ module Exercise
       # film["genres"], film["year"], film["access_level"], film["country"]
       def rating(_array)
         arr = _array.map do |film|
-          unless film['country'].nil?
-            film['rating_kinopoisk'].to_f if film['country'].split(',').length >= 2
-          end
+          film['rating_kinopoisk'].to_f if !film['country'].nil? && (film['country'].split(',').length >= 2)
         end.compact
         arr.delete(0)
         arr.reduce(:+) / arr.length
       end
 
       def chars_count(_films, _threshold)
-	arr = _films.map do |film|
-	  film['rating_kinopoisk'].to_f >= _threshold ? film['name'] : 'o'
-	end.map{ |name| name.chars }.flatten
-	arr.reduce(0) do |memo, letter| 
-	  memo += (letter == "и") ? 1 : 0
-	end
+        arr = _films.map do |film|
+          film['rating_kinopoisk'].to_f >= _threshold ? film['name'] : 'o'
+        end.map(&:chars).flatten
+        arr.reduce(0) do |memo, letter|
+          memo += letter == 'и' ? 1 : 0
+        end
       end
-
     end
   end
 end
