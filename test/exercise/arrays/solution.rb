@@ -2,11 +2,11 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-        array
+        array.map { |num| num.positive? ? array.max : num }
       end
 
-      def search(_array, _query)
-        0
+      def search(array, query)
+        array.find_index { |element| element == query } || -1
       end
     end
   end
