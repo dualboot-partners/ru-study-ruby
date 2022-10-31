@@ -15,8 +15,9 @@ module Exercise
         return ratings_of_films.inject(:+)/ratings_of_films.length
       end 
 
-      def chars_count(_films, _threshold)
-        0
+      def chars_count(films, threshold)
+        filtered_films = films.map{|film| film["rating_kinopoisk"].to_f <= threshold ? nil : film["name"]}.compact
+        return filtered_films.inject(0){|counter, film_name| counter+film_name.count('и')}
       end
     end
   end
