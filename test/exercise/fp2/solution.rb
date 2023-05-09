@@ -5,7 +5,7 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each(&block)
+      def my_each
         i = 0
 
         until i >= self.size
@@ -23,7 +23,9 @@ module Exercise
       def my_compact; end
 
       # Написать свою функцию my_reduce
-      def my_reduce; end
+      def my_reduce()
+
+      end
     end
   end
 end
