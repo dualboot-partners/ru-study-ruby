@@ -39,7 +39,6 @@ class Exercise::Fp2Test < Minitest::Test
   end
 
   def test_my_reduce
-    skip
     func = ->(acc, element) { acc * element }
 
     assert @array.reduce(&func) == @my_array.my_reduce(&func)
