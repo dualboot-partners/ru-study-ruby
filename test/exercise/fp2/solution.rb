@@ -23,8 +23,16 @@ module Exercise
       def my_compact; end
 
       # Написать свою функцию my_reduce
-      def my_reduce()
-
+      def my_reduce(accum = nil)
+        self.my_each do |n|
+          if accum.nil?
+            accum = n
+          else
+            accum = yield(accum, n)
+          end
+        end
+        
+        return accum
       end
     end
   end
