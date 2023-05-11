@@ -24,7 +24,7 @@ module Exercise
 
       # Написать свою функцию my_reduce
       def my_reduce(accum = nil)
-        self.my_each { |n| accum.nil? ? accum = n : accum = yield(accum, n)}
+        self.my_each { |n| accum.nil? ? accum = n : accum = yield(accum, n) }
         return accum
       end
     end
