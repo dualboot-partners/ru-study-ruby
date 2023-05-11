@@ -20,7 +20,9 @@ module Exercise
       def my_map; end
 
       # Написать свою функцию my_compact
-      def my_compact; end
+      def my_compact;
+        self.my_reduce([]) { |result, n| n.nil? ? result : result << n }
+      end
 
       # Написать свою функцию my_reduce
       def my_reduce(accum = nil)
