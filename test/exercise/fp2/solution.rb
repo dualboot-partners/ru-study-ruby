@@ -18,12 +18,12 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map;
-        self.my_reduce([]) { |result, n| result << yield(n) }
+        self.my_reduce(MyArray.new) { |result, n| result << yield(n) }
       end
 
       # Написать свою функцию my_compact
       def my_compact;
-        self.my_reduce([]) { |result, n| n.nil? ? result : result << n }
+        self.my_reduce(MyArray.new) { |result, n| n.nil? ? result : result << n }
       end
 
       # Написать свою функцию my_reduce
