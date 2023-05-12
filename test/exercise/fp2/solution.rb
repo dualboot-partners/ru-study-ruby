@@ -5,15 +5,13 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each
-        i = 0
-
-        until i >= self.size
+      def my_each(i = 0, &block)
+        if self.size > i
           yield(self[i])
-          i += 1
+          self.my_each(i + 1, &block)
+        else
+          self
         end
-
-        self
       end
 
       # Написать свою функцию my_map
