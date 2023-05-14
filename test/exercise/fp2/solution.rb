@@ -12,10 +12,9 @@ module Exercise
       end
 
       # Написать свою функцию my_map
-      def my_map
-        new_array = self.class.new
-        my_each { |item| new_array << yield(item) }
-        new_array
+      def my_map(&block)
+        func = ->(acc, element) { acc.push(block.call(element)) }
+        my_reduce(self.class.new, &func)
       end
 
       # Написать свою функцию my_compact
@@ -23,7 +22,7 @@ module Exercise
 
       # Написать свою функцию my_reduce
       def my_reduce(accumulator = nil, &block)
-        if block.nil? && accumulator.class.name == 'Symbol'
+        if block.nil? && accumulator.instance_of?(Symbol)
           block = accumulator.to_proc
           accumulator = nil
         end
