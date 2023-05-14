@@ -13,12 +13,18 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map(&block)
-        func = ->(acc, element) { acc.push(block.call(element)) }
+        func = ->(accumulator, element) { accumulator.push(block.call(element)) }
         my_reduce(self.class.new, &func)
       end
 
       # Написать свою функцию my_compact
-      def my_compact; end
+      def my_compact
+        func = lambda { |accumulator, element|
+          accumulator.push(element) unless element.nil?
+          accumulator
+        }
+        my_reduce(self.class.new, &func)
+      end
 
       # Написать свою функцию my_reduce
       def my_reduce(accumulator = nil, &block)
