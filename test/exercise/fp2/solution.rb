@@ -22,7 +22,22 @@ module Exercise
       def my_compact; end
 
       # Написать свою функцию my_reduce
-      def my_reduce; end
+      def my_reduce(accumulator = nil, &block)
+        if block.nil? && accumulator.class.name == 'Symbol'
+          block = accumulator.to_proc
+          accumulator = nil
+        end
+
+        if accumulator.nil?
+          accumulator, *tail = self
+        else
+          tail = self
+        end
+
+        (self.class.new tail).my_each { accumulator = block.call(accumulator, _1) }
+
+        accumulator
+      end
     end
   end
 end
