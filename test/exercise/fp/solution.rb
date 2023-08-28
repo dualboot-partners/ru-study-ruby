@@ -14,11 +14,12 @@ module Exercise
       def chars_count(films, threshold)
         films.reduce(0) do |count, film|
           rating_kp = film['rating_kinopoisk']&.to_f
-          if rating_kp && rating_kp >= threshold && film['name']
-            count + film['name'].count('и')
-          else
-            count
-          end
+          film_name = film['name']
+
+          valid_rating = rating_kp && rating_kp >= threshold
+          name_count = film_name ? film_name.count('и') : 0
+
+          count + (valid_rating ? name_count : 0)
         end
       end
 
