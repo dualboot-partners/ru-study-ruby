@@ -16,10 +16,9 @@ module Exercise
           rating_kp = film['rating_kinopoisk']&.to_f
           film_name = film['name']
 
-          valid_rating = rating_kp && rating_kp >= threshold
-          name_count = film_name ? film_name.count('и') : 0
+          next count unless rating_kp && rating_kp >= threshold && film_name
 
-          count + (valid_rating ? name_count : 0)
+          count + film_name.count('и')
         end
       end
 
