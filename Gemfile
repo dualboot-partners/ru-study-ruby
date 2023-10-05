@@ -6,6 +6,7 @@ ruby '3.0.2'
 gem 'coveralls', require: false
 gem 'factory_girl'
 gem 'minitest'
+gem 'pry'
 gem 'rack'
 gem 'rack-test'
 gem 'rake'
