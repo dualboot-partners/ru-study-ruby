@@ -17,23 +17,22 @@ module Exercise
         end
       end
 
-      def search(array, query)
-        low = 0
-        high = array.length - 1
+      def binary_search_recursive(array, target, low, high)
+        return -1 if low > high
 
-        while low <= high
-          mid = (high + low) / 2
+        mid = (high + low) / 2
 
-          if array[mid] == query
-            mid
-          elsif array[mid] < query
-            low = mid + 1
-          else
-            high = mid - 1
-          end
+        if array[mid] == target
+          mid
+        elsif array[mid] < target
+          binary_search_recursive(array, target, mid + 1, high)
+        else
+          binary_search_recursive(array, target, low, mid - 1)
         end
+      end
 
-        -1
+      def search(array, query)
+        binary_search_recursive(array, query, 0, array.length - 1)
       end
     end
   end
