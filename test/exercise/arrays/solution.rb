@@ -17,16 +17,16 @@ module Exercise
         end
       end
 
-      def search(_array, _query)
+      def search(array, query)
         low = 0
         high = _array.length - 1
 
         while low <= high
           mid = (high + low) / 2
 
-          if _array[mid] == _query
+          if array[mid] == query
             mid
-          elsif _array[mid] < _query
+          elsif array[mid] < query
             low = mid + 1
           else
             high = mid - 1
