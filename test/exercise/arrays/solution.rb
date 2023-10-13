@@ -19,7 +19,7 @@ module Exercise
 
       def search(array, query)
         low = 0
-        high = _array.length - 1
+        high = array.length - 1
 
         while low <= high
           mid = (high + low) / 2
