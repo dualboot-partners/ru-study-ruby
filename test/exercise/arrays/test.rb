@@ -1,10 +1,10 @@
 require './test/test_helper'
-require_relative './solution'
+require_relative 'solution'
 
 class Exercise::ArraysTest < Minitest::Test
-  # Заменить все положительные элементы целочисленного массива на максимальное значение элементов массива.
+  # Заменить все положительные элементы целочисленного
+  # массива на максимальное значение элементов массива.
   def test_replace
-    skip
     array = [3, 2, -8, 4, 100, -6, 7, 8, -99]
     new_array = Exercise::Arrays.replace(array)
 
@@ -14,7 +14,6 @@ class Exercise::ArraysTest < Minitest::Test
   # Реализовать двоичный поиск
   # Функция должна возвращать индекс элемента
   def test_bin_search
-    skip
     assert Exercise::Arrays.search([1], 900) == -1
     assert Exercise::Arrays.search([1], 1).zero?
     assert Exercise::Arrays.search([], 900) == -1
