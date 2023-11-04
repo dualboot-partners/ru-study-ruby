@@ -1,19 +1,22 @@
 module Exercise
   module Arrays
     class << self
-      def replace(array)
+      def max_value(array)
         max = 0
-        item = 0
-        array.size.times { |n| max = array[n] if max < array[n] }
-        while array.size > item
-          if (array[item]).positive?
-            array[item] = max
-          else
-            array[item]
-          end
-          item += 1
+        array.each do |item|
+          max = item if item > max && item.positive?
         end
-        array
+        max
+      end
+
+      def replace(array)
+        array.map do |item|
+          if item.positive?
+            max_value(array)
+          else
+            item
+          end
+        end
       end
 
       def search(array, query)
@@ -27,8 +30,8 @@ module Exercise
         when 0
           mid_index
         when 1
-          subs = search(array.drop(mid_index + 1), query)
-          subs.nil? ? nil : (mid_index + 1) + subs
+          min_index = search(array.drop(mid_index + 1), query)
+          min_index.nil? ? nil : (mid_index + 1) + min_index
         end
       end
     end
