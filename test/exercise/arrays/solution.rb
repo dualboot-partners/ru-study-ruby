@@ -12,18 +12,14 @@ module Exercise
         array.map { |el| el.positive? ? maximum_value : el }
       end
 
-      def search(array, query, numerator = 1.0, denominator = 2.0)
-        return -1 if array.empty? || denominator > 2**(array.length.to_s.length * 4)
+      def search(array, query, minimum_value = 0, maximum_value = array.length - 1)
+        return -1 if minimum_value > maximum_value || array[minimum_value] > query || array[maximum_value] < query
 
-        index = ((array.length - 1) * (numerator / denominator)).round
+        index = (minimum_value + maximum_value) / 2
 
-        if query < array[index]
-          search(array, query, (numerator * 2) - 1, denominator * 2)
-        elsif query > array[index]
-          search(array, query, (numerator * 2) + 1, denominator * 2)
-        elsif query == array[index]
-          index
-        end
+        return index if query == array[index]
+
+        query < array[index] ? search(array, query, minimum_value, index - 1) : search(array, query, index + 1, maximum_value)
       end
     end
   end
