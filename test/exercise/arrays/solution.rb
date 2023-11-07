@@ -11,11 +11,7 @@ module Exercise
 
       def replace(array)
         array.map do |item|
-          if item.positive?
-            max_value(array)
-          else
-            item
-          end
+          item.positive? ? max_value(array) : item
         end
       end
 
