@@ -20,14 +20,13 @@ module Exercise
 
         mid_index = array.length / 2
 
-        case query <=> array[mid_index]
-        when -1
+        if query < array[mid_index]
           search(array.take(mid_index), query)
-        when 0
-          mid_index
-        when 1
+        elsif query > array[mid_index]
           min_index = search(array.drop(mid_index + 1), query)
           min_index.nil? ? nil : (mid_index + 1) + min_index
+        else
+          mid_index
         end
       end
     end
