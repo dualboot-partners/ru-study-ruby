@@ -14,7 +14,13 @@ module Exercise
       end
 
       # Написать свою функцию my_map
-      def my_map; end
+      def my_map
+        return '#<Enumerator: ...>' unless block_given?
+
+        output_array = MyArray.new
+        my_each { |element| output_array << yield(element) }
+        output_array
+      end
 
       # Написать свою функцию my_compact
       def my_compact; end
