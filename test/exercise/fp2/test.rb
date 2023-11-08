@@ -11,7 +11,6 @@ class Exercise::Fp2Test < Minitest::Test
   end
 
   def test_my_each
-    skip
     result = []
     my_result = []
 
