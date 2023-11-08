@@ -1,5 +1,3 @@
-require 'pry'
-
 module Exercise
   module Fp
     class << self
@@ -7,17 +5,8 @@ module Exercise
       # film["name"], film["rating_kinopoisk"], film["rating_imdb"],
       # film["genres"], film["year"], film["access_level"], film["country"]
       def rating(array)
-        # binding.pry
-        ratings = []
-        array.select do
-          |film|
-          unless film['rating_kinopoisk'].nil? || film['rating_kinopoisk'] == '0' || film['country'].nil?
-            if film['country'].include?(',')
-              ratings << film['rating_kinopoisk'].to_f
-            end
-          end
-        end
-        ratings.reduce(:+) / ratings.length
+        array.lazy.select { |film| film['rating_kinopoisk'].to_f.positive? }.select { |film| film['country'].to_s.include?(',') }
+             .map { |film| film['rating_kinopoisk'].to_f }.reduce([0, 0]) { |acc, rating| [acc[0] + rating, acc[1] + 1] }.reduce(:/)
       end
 
       def chars_count(_films, _threshold)
