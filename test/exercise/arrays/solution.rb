@@ -19,15 +19,10 @@ module Exercise
         return -1 if array.size.zero? || query < array.first || query > array.last
 
         mid_index = array.length / 2
+        return search(array.take(mid_index), query) if query < array[mid_index]
 
-        if query < array[mid_index]
-          search(array.take(mid_index), query)
-        elsif query > array[mid_index]
-          min_index = search(array.drop(mid_index + 1), query)
-          min_index.nil? ? nil : (mid_index + 1) + min_index
-        else
-          mid_index
-        end
+        min_index = search(array.drop(mid_index + 1), query)
+        min_index.nil? ? nil : (mid_index + 1) + min_index
       end
     end
   end
