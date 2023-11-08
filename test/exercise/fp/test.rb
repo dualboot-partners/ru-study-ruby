@@ -1,15 +1,15 @@
 require 'csv'
 require './test/test_helper'
 require_relative './solution'
+require 'pry'
 
 # Оба задания нужно решить используя map и reduce
 class Exercise::FpTest < Minitest::Test
   # Посчитать средний рейтинг фильмов по версии кинопоиска у которых две или больше стран
   # Фильмы у которых рейтиг не задан или равен 0 не учитывать в расчете среднего.
   def test_rating
-    skip
     array = CSV.readlines('./test/fixtures/films.csv', headers: true)
-
+    # binding.pry
     result = Exercise::Fp.rating(array)
     # rubocop:disable Lint/FloatComparison
     assert result == 6.809410385259628
