@@ -9,8 +9,9 @@ module Exercise
              .map { |film| film['rating_kinopoisk'].to_f }.reduce([0, 0]) { |acc, rating| [acc[0] + rating, acc[1] + 1] }.reduce(:/)
       end
 
-      def chars_count(_films, _threshold)
-        0
+      def chars_count(films, threshold)
+        films.lazy.reject { |film| film['rating_kinopoisk'].to_f < threshold }.map { |film| film['name'] }
+             .reduce(0) { |acc, name| acc + name.count('и') }
       end
     end
   end
