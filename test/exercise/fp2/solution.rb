@@ -6,7 +6,7 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
-        return '#<Enumerator: ...>' unless block_given?
+        return to_enum unless block_given?
 
         for element in self
           yield(element)
@@ -15,7 +15,7 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map
-        return '#<Enumerator: ...>' unless block_given?
+        return to_enum unless block_given?
 
         output_array = MyArray.new
         my_each { |element| output_array << yield(element) }
@@ -31,6 +31,14 @@ module Exercise
 
       # Написать свою функцию my_reduce
       def my_reduce(accumulator = nil, array = nil, &block)
+        if accumulator.instance_of?(String) || accumulator.instance_of?(Symbol)
+          block = ->(acc, element) { acc.send(accumulator, element) }
+          return my_reduce(&block)
+        elsif array.instance_of?(String) || array.instance_of?(Symbol)
+          block = ->(acc, element) { acc.send(array, element) }
+          return my_reduce(accumulator, &block)
+        end
+
         array ||= self
         unless accumulator
           accumulator = self[0]

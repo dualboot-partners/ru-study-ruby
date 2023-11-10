@@ -1,6 +1,7 @@
 require 'csv'
 require './test/test_helper'
 require_relative './solution'
+require 'pry-byebug'
 
 # Нужно реализовать примитивы функционального программирования
 class Exercise::Fp2Test < Minitest::Test
@@ -38,7 +39,6 @@ class Exercise::Fp2Test < Minitest::Test
 
   def test_my_reduce
     func = ->(acc, element) { acc * element }
-
     assert @array.reduce(&func) == @my_array.my_reduce(&func)
     assert @array.reduce(2, &func) == @my_array.my_reduce(2, &func)
     assert @array.reduce(&:+) == @my_array.my_reduce(&:+)
