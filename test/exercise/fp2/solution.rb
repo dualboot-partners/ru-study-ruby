@@ -30,7 +30,18 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce; end
+      def my_reduce(accumulator = nil, array = nil, &block)
+        array ||= self
+        unless accumulator
+          accumulator = self[0]
+          array = array.drop(1)
+        end
+        return accumulator if array.empty?
+
+        accumulator = yield accumulator, array[0]
+        array = array.drop(1)
+        my_reduce(accumulator, array, &block)
+      end
     end
   end
 end
