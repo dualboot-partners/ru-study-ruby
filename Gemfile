@@ -6,7 +6,7 @@ ruby '3.0.2'
 gem 'coveralls', require: false
 gem 'factory_girl'
 gem 'minitest'
-gem 'pry'
+gem 'pry-byebug', '~> 3.10.1'
 gem 'rack'
 gem 'rack-test'
 gem 'rake'
