@@ -10,8 +10,7 @@ module Exercise
       end
 
       def replace(array)
-        find_max(array)
-        array.map! { |x| x.positive? ? @max : x }
+        array.map! { |x| x.positive? ? Exercise::Arrays.find_max(array) : x }
       end
 
       def search(array, query, left = 0, right = array.length - 1)
