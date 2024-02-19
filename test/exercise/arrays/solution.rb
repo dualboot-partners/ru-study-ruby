@@ -2,10 +2,11 @@ module Exercise
   module Arrays
     class << self
       def find_max(array)
-        @max = array[0]
-        array.each do  |i|
-          @max = i if i >= @max
+        max = array[0]
+        array.each do |i|
+          i > max ? max = i : i
         end
+        max
       end
 
       def replace(array)
