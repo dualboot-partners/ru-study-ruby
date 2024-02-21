@@ -10,12 +10,11 @@ module Exercise
       end
 
       def replace(array)
-        array.map! { |x| x.positive? ? Exercise::Arrays.find_max(array) : x }
+        array.map! { |x| x.positive? ? find_max(array) : x }
       end
 
       def search(array, query, left = 0, right = array.length - 1)
-        return -1 if left > right
-        return -1 unless array.include? query
+        return -1 if left > right || query < array.first || query > array.last
 
         mid = (left + right) / 2
         return mid if array[mid] == query
