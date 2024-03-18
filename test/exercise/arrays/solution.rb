@@ -1,12 +1,25 @@
 module Exercise
   module Arrays
     class << self
-      def replace(array)
-        array
+      def find_max(array)
+        max = array[0]
+        array.each do |i|
+          i > max ? max = i : i
+        end
+        max
       end
 
-      def search(_array, _query)
-        0
+      def replace(array)
+        array.map! { |x| x.positive? ? find_max(array) : x }
+      end
+
+      def search(array, query, left = 0, right = array.length - 1)
+        return -1 if left > right || query < array.first || query > array.last
+
+        mid = (left + right) / 2
+        return mid if array[mid] == query
+        return search(array, query, left, right - 1) if array[mid] > query
+        return search(array, query, left + 1, right) if array[mid] < query
       end
     end
   end
