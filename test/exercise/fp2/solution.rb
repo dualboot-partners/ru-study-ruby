@@ -5,12 +5,11 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each(&block)
-        i = 0
-
+      def my_each(i = 0, &block)
+        
         while i < size
           block.call(self[i])
-          i += 1
+          return my_each(i + 1, &block)
         end
         self
       end
@@ -40,17 +39,19 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce(acc = nil, &block)
-        i = 0
+      def my_reduce(i = 0, acc = nil, &block)
+        # i = 0
 
         if acc.nil?
           acc = self[0]
+          # return my_reduce(i + 1, acc, &block) 
           i = 1
         end
 
         while i < size
           acc = (block.call acc, self[i])
-          i += 1
+          return my_reduce(i + 1, acc + i, &block) 
+          # i += 1
         end
         acc
       end
