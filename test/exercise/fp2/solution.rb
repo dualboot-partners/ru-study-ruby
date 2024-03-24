@@ -5,13 +5,11 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each(i = 0, &block)
-        
-        while i < size
-          block.call(self[i])
-          return my_each(i + 1, &block)
-        end
-        self
+      def my_each(item = 0, &block)
+        return self if item >= size
+
+        block.call self[item]
+        my_each(item + 1, &block) if item < size
       end
 
       # Написать свою функцию my_map
@@ -44,13 +42,14 @@ module Exercise
 
         if acc.nil?
           acc = self[0]
-          # return my_reduce(i + 1, acc, &block) 
-          i = 1
+          # return my_reduce(i + 1, acc, &block)
+          # i = 1
         end
 
         while i < size
+          # i = 1
           acc = (block.call acc, self[i])
-          return my_reduce(i + 1, acc + i, &block) 
+          return my_reduce(i + 1, acc + i, &block)
           # i += 1
         end
         acc
