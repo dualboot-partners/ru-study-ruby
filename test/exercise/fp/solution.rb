@@ -5,11 +5,32 @@ module Exercise
       # film["name"], film["rating_kinopoisk"], film["rating_imdb"],
       # film["genres"], film["year"], film["access_level"], film["country"]
       def rating(_array)
-        0
+        ratings = _array.map do |film|
+          rating_kinopoisk = film["rating_kinopoisk"].to_f
+          countries = film["country"].to_s.split(',')
+
+          rating_condition = rating_kinopoisk > 0
+          country_condition = countries.length > 1
+
+          rating_condition && country_condition ? rating_kinopoisk : nil
+        end.compact
+
+        ratings.length > 0 ? ratings.reduce(:+) / ratings.length : 0
       end
 
       def chars_count(_films, _threshold)
-        0
+        search_char = 'и'
+
+        films_names = _films.map do |film|
+          rating_kinopoisk = film["rating_kinopoisk"].to_f
+          film_name = film["name"]
+
+          rating_kinopoisk >= _threshold ? film_name : ''
+        end
+
+        films_names.reduce(0) do |accumulator, film_name|
+          accumulator + film_name.count(search_char)
+        end
       end
     end
   end
