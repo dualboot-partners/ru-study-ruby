@@ -19,7 +19,18 @@ module Exercise
       end
 
       def chars_count(_films, _threshold)
-        0
+        search_char = 'и'
+
+        films_names = _films.map do |film|
+          rating_kinopoisk = film["rating_kinopoisk"].to_f
+          film_name = film["name"]
+
+          rating_kinopoisk >= _threshold ? film_name : ''
+        end
+
+        films_names.reduce(0) do |accumulator, film_name|
+          accumulator + film_name.count(search_char)
+        end
       end
     end
   end
